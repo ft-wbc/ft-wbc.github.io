@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="FT-WBC learns fault-tolerant whole-body control for legged loco-manipulation under actuator failures.">
+  <meta name="keywords" content="FT-WBC, Fault-Tolerant Control, Whole-Body Control, Loco-Manipulation, Legged Manipulator">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FT-WBC: Learning Fault-Tolerant Whole-Body Control for Legged Loco-Manipulation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#top">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Sections
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="#abstract">
+            Abstract
+          </a>
+          <a class="navbar-item" href="#method">
+            Method
+          </a>
+          <a class="navbar-item" href="#experiments">
+            Experiments
+          </a>
+          <a class="navbar-item" href="#realworld">
+            Real-World Videos
+          </a>
+          <a class="navbar-item" href="#BibTeX">
+            BibTeX
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero" id="top">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FT-WBC: Learning Fault-Tolerant Whole-Body Control for Legged Loco-Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Yudong Zhong<sup>1</sup>,</span>
+            <span class="author-block">Pengfei MAI<sup>1</sup>,</span>
+            <span class="author-block">Sikai Guo<sup>1</sup>,</span>
+            <span class="author-block">Jiahang Cao<sup>2</sup>,</span>
+            <span class="author-block">Zhihai Bi<sup>1</sup>,</span>
+            <span class="author-block">Qiuyue LIU<sup>1</sup>,</span>
+            <span class="author-block">Ziyan Feng<sup>1</sup>,</span>
+            <span class="author-block">Jinni Zhou<sup>1</sup>,</span>
+            <span class="author-block">Jun Ma<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The Hong Kong University of Science and Technology (Guangzhou)</span><br>
+            <span class="author-block"><sup>2</sup>The University of Hong Kong</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Conference on Robot Learning (CoRL) 2026 Submission</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/pdfs/example.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/hhhappyshow/FT-WBC-Learning-Fault-Tolerant-Whole-Body-Control-for-Legged-Loco-Manipulation"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">Baseline Policies Fail Without Fault Tolerance</h2>
+      <div class="columns is-multiline is-centered">
+        <div class="column is-half">
+          <video autoplay muted loop controls playsinline width="100%">
+            <source src="./static/pictures/reality_demo/FALL/edited/FL_HIP_LOCO.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered"><b>Locomotion baseline</b> under FL hip failure.</p>
+        </div>
+        <div class="column is-half">
+          <video autoplay muted loop controls playsinline width="100%">
+            <source src="./static/pictures/reality_demo/FALL/edited/RL_CALF_LOCO.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered"><b>Locomotion baseline</b> under RL calf failure.</p>
+        </div>
+        <div class="column is-half">
+          <video autoplay muted loop controls playsinline width="100%">
+            <source src="./static/pictures/reality_demo/FALL/edited/FR_CALF_WBC.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered"><b>Whole-body baseline</b> under FR calf failure.</p>
+        </div>
+        <div class="column is-half">
+          <video autoplay muted loop controls playsinline width="100%">
+            <source src="./static/pictures/reality_demo/FALL/edited/RL_THIGH_WBC.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered"><b>Whole-body baseline</b> under RL thigh failure.</p>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        Without explicit fault estimation and posture adaptation, nominal loco-manipulation
+        policies quickly lose balance after actuator failures.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Legged manipulators combine the mobility of quadruped platforms with the manipulation
+            capability of robotic arms. However, arm-induced center-of-mass shifts and dynamic
+            disturbances make the whole system more vulnerable to actuator failures, which can cause
+            falls, object drops, and task failures.
+          </p>
+          <p>
+            We propose <b>FT-WBC</b>, a fault-tolerant loco-manipulation framework for robust
+            whole-body control under lower-limb actuator failures. FT-WBC adopts a decoupled upper-
+            and lower-body policy architecture and introduces two key modules: a <b>Fault Estimator</b>
+            (FE), which predicts faulty joints from proprioceptive histories, and a
+            <b>Posture Adaptation Module</b> (PAM), which converts manipulation-driven base posture
+            plans into safe and executable posture commands.
+          </p>
+          <p>
+            Through fault-aware posture adaptation, FT-WBC synthesizes compensatory gaits, preserves
+            as much arm workspace as possible, and maintains whole-body stability. Simulation and
+            real-world experiments on a Unitree Go2 with an Airbot Play arm show improved survival
+            rate and reachable workspace under weakening and locked failures, with zero-shot
+            transfer to the real robot.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered" id="video">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview Video</h2>
+        <div class="overview-video-wrapper">
+          <video controls loop playsinline>
+            <source src="./static/pictures/FT-WBC.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Framework Overview</h2>
+
+
+        <div class="content has-text-centered">
+          <img src="./static/pictures/framework.png" alt="FT-WBC framework overview." width="95%">
+        </div>
+        <br/>
+
+        <div class="content has-text-justified">
+          <p>
+            FT-WBC adopts a decoupled architecture consisting of a
+            lower-body leg policy and an upper-body arm policy. The leg policy generates quadruped joint
+            actions from target motion commands and the predicted fault vector, while the arm policy tracks the
+            target end-effector pose and outputs both arm joint actions and a desired base posture plan. The FE
+            predicts joint fault conditions, and the PAM remaps the desired base posture plan into a safe posture
+            command, enabling fault-aware whole-body control under actuator failures.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="columns is-centered" id="realworld">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Real-World Demonstrations</h2>
+
+        <h3 class="title is-4 has-text-centered">Weakening Faults</h3>
+        <h4 class="title is-5">Locomotion</h4>
+        <div class="columns is-multiline is-centered">
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/LOCO/edited/FL_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/LOCO/edited/FL_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Calf</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/LOCO/edited/FR_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FR Thigh</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/LOCO/edited/RL_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Thigh</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/LOCO/edited/RR_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/LOCO/edited/RR_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Calf</p>
+          </div>
+        </div>
+
+        <h4 class="title is-5">WBC</h4>
+        <div class="columns is-multiline is-centered">
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/WBC/edited/FL_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/WBC/edited/FL_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Calf</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/WBC/edited/FR_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FR Thigh</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/WBC/edited/RL_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Thigh</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/WBC/edited/RR_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/WBC/edited/RR_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Calf</p>
+          </div>
+        </div>
+
+        <h4 class="title is-5">Pick and Place</h4>
+        <div class="columns is-multiline is-centered">
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/PICK/edited/FL_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Hip (side view)</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/PICK/edited/FL_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Thigh (side view)</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/PICK/edited/RL_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Calf (side view)</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/PICK/edited/FL_HIP1.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Hip (front view)</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/PICK/edited/FL_THIGH1.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Thigh (front view)</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/WEAKING/PICK/edited/RL_CALF1.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Calf (front view)</p>
+          </div>
+        </div>
+
+        <h3 class="title is-4 has-text-centered">Locked Faults</h3>
+        <h4 class="title is-5">Locomotion</h4>
+        <div class="columns is-multiline is-centered">
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/LOCO/EDITED/FL_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/LOCO/EDITED/FR_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FR Thigh</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/LOCO/EDITED/FL_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Calf</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/LOCO/EDITED/RR_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/LOCO/EDITED/RL_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL THIGH</p>
+          </div>          
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/LOCO/EDITED/RR_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Calf</p>
+          </div>
+        </div>
+
+        <h4 class="title is-5">WBC</h4>
+        <div class="columns is-multiline is-centered">
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/WBC/EDITED/FL_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/WBC/EDITED/FL_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Calf</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/WBC/EDITED/FR_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FR Thigh</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/WBC/EDITED/RL_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Thigh</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/WBC/EDITED/RR_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Hip</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/WBC/EDITED/RR_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RR Calf</p>
+          </div>
+        </div>
+
+        <h4 class="title is-5">Pick and Place</h4>
+        <div class="columns is-multiline is-centered">
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/PICK/EDITED/RL_HIP.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Hip （front view）</p>
+          </div>
+                    <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/PICK/EDITED/RL_THIGH.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Thigh （front view）</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/PICK/EDITED/FL_CALF.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Calf （front view）</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/PICK/EDITED/RL_HIP2.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Hip （side view）</p>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/PICK/EDITED/RL_THIGH2.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">RL Thigh （side view）</p>
+          </div>
+                    <div class="column is-one-third">
+            <video autoplay muted loop controls playsinline width="100%">
+              <source src="./static/pictures/reality_demo/LOCKED/PICK/EDITED/FL_CALF2.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered">FL Calf （side view）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{anonymous2026ftwbc,
+  title     = {FT-WBC: Learning Fault-Tolerant Whole-Body Control for Legged Loco-Manipulation},
+  author    = {Yudong Zhong and Pengfei MAI and Sikai Guo and Jiahang Cao and Zhihai Bi and Qiuyue LIU and Ziyan Feng and JINNI ZHOU and Jun Ma},
+  booktitle = {Conference on Robot Learning},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+        href="./static/pdfs/example.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link"
+        href="https://github.com/hhhappyshow/FT-WBC-Learning-Fault-Tolerant-Whole-Body-Control-for-Legged-Loco-Manipulation">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This project page summarizes FT-WBC, a fault-tolerant whole-body control framework for
+            legged loco-manipulation under actuator failures.
+          </p>
+          <p>
+            The page structure is adapted from the Nerfies project page template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('video').forEach((video) => {
+    const source = video.querySelector('source');
+    const canPlayAudio = source && source.getAttribute('src') === './static/pictures/FT-WBC.mp4';
+
+    if (canPlayAudio) {
+      video.muted = false;
+      video.defaultMuted = false;
+      return;
+    }
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+
+    video.addEventListener('volumechange', () => {
+      if (!video.muted || video.volume !== 0) {
+        video.muted = true;
+        video.volume = 0;
+      }
+    });
+  });
+</script>
+</body>
+</html>
